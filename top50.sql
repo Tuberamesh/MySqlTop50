@@ -32,3 +32,10 @@ where author_id=viewer_id
 order by id asc
 #similar to above but with group by instead of distinct
 #select author_id as id from Views where author_id=viewer_id group by author_id order by author_id
+
+
+# 5th question of top 50
+# Write a MySQL query to find the tweet_id of all tweets whose content is longer than
+select tweet_id
+from Tweets
+where char_length(content)>15
