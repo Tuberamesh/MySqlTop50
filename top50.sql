@@ -16,3 +16,9 @@ from World
 where area >= 3000000 or population >=25000000
  
  
+ 
+ # 3rd question of top 50
+ # Write a MySQL query to find the name of all customers who have not been referred by the customer with id 2.
+SELECT name
+FROM Customer
+WHERE referee_id != 2 OR referee_id IS NULL;
