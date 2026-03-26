@@ -89,3 +89,21 @@ JOIN
     --  ON w1.recordDate = DATE_ADD(w2.recordDate, INTERVAL 1 DAY)
 WHERE 
     weather1.temperature > weather2.temperature;
+
+
+
+
+ # 10th question of top 50
+# Write a MySQL query to find the machine_id and the average processing time for all machines
+
+SELECT 
+    s.machine_id, 
+    ROUND(AVG(e.timestamp - s.timestamp), 3) AS processing_time
+FROM Activity s
+JOIN Activity e 
+    ON s.machine_id = e.machine_id 
+    AND s.process_id = e.process_id
+WHERE 
+    s.activity_type = 'start' 
+    AND e.activity_type = 'end'
+GROUP BY s.machine_id;
