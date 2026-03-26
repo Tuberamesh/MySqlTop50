@@ -74,3 +74,18 @@ SELECT customer_id, COUNT(visit_id) AS count_no_trans
 FROM Visits
 WHERE visit_id NOT IN (SELECT visit_id FROM Transactions)
 GROUP BY customer_id;
+
+
+
+# 9th question of top 50
+# Write a MySQL query to find the id of all weather records where the temperature is higher
+SELECT 
+    weather1.id
+FROM 
+    Weather AS weather1
+JOIN 
+    Weather AS weather2 
+    ON DATEDIFF(weather1.recordDate, weather2.recordDate) = 1
+    --  ON w1.recordDate = DATE_ADD(w2.recordDate, INTERVAL 1 DAY)
+WHERE 
+    weather1.temperature > weather2.temperature;
