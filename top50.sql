@@ -52,3 +52,10 @@ where char_length(content)>15
 select unique_id,name from 
 employees as e left join employeeuni as eu
 on e.id=eu.id;
+
+
+# 7th question of top 50
+# Write a MySQL query to find the product_name, year and price of all products in
+select product_name,year, price 
+from Sales s left join Product p on
+p.product_id=s.product_id;
