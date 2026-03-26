@@ -59,3 +59,18 @@ on e.id=eu.id;
 select product_name,year, price 
 from Sales s left join Product p on
 p.product_id=s.product_id;
+
+
+
+# 8th question of top 50
+# Write a MySQL query to find the customer_id and count of visits for all customers who
+-- select distinct v.customer_id, count(v.visit_id) as count_no_trans
+-- from Visits v left join Transactions T
+-- on v.visit_id =T.visit_id
+-- where T.transaction_id is null
+-- group by  v.customer_id
+
+SELECT customer_id, COUNT(visit_id) AS count_no_trans
+FROM Visits
+WHERE visit_id NOT IN (SELECT visit_id FROM Transactions)
+GROUP BY customer_id;
