@@ -39,3 +39,16 @@ order by id asc
 select tweet_id
 from Tweets
 where char_length(content)>15
+
+
+
+# 6th question of top 50
+# Write a MySQL query to find the unique_id and name of all employees in the Employees
+-- select ui.unique_id, e.name
+-- from employees e
+-- left join EmployeeUni ui
+-- on e.id=ui.id
+
+select unique_id,name from 
+employees as e left join employeeuni as eu
+on e.id=eu.id;
