@@ -133,3 +133,16 @@ LEFT JOIN Examinations e
     AND sub.subject_name = e.subject_name
 GROUP BY s.student_id, s.student_name, sub.subject_name
 ORDER BY s.student_id, sub.subject_name;
+
+
+
+# 13th question of top 50
+# Write a MySQL query to find the name of all employees who are managers of at least
+SELECT name
+FROM Employee
+WHERE id IN (
+    SELECT managerId
+    FROM Employee
+    GROUP BY managerId
+    HAVING COUNT(id) >= 5
+)
