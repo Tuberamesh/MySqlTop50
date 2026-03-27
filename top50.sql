@@ -107,3 +107,13 @@ WHERE
     s.activity_type = 'start' 
     AND e.activity_type = 'end'
 GROUP BY s.machine_id;
+
+
+
+
+# 11th question of top 50
+# Write a MySQL query to find the name and bonus of all employees who have a bonus
+select name,b.bonus
+from Employee e
+left join Bonus b on b.empId=e.empId
+where b.bonus<1000 or b.bonus is null
