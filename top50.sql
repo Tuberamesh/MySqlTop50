@@ -117,3 +117,19 @@ select name,b.bonus
 from Employee e
 left join Bonus b on b.empId=e.empId
 where b.bonus<1000 or b.bonus is null
+
+
+# 12th question of top 50
+# Write a MySQL query to find the student_id, student_name, subject_name and the
+SELECT 
+    s.student_id, 
+    s.student_name, 
+    sub.subject_name, 
+    COUNT(e.student_id) AS attended_exams
+FROM Students s
+CROSS JOIN Subjects sub
+LEFT JOIN Examinations e 
+    ON s.student_id = e.student_id 
+    AND sub.subject_name = e.subject_name
+GROUP BY s.student_id, s.student_name, sub.subject_name
+ORDER BY s.student_id, sub.subject_name;
