@@ -146,3 +146,10 @@ WHERE id IN (
     GROUP BY managerId
     HAVING COUNT(id) >= 5
 )
+
+# 14th question of top 50
+# Write a MySQL query to find the name and price of all products that are either in
+select *
+from Cinema 
+where description <> 'boring' and id %2!=0
+order by rating desc
