@@ -153,3 +153,16 @@ select *
 from Cinema 
 where description <> 'boring' and id %2!=0
 order by rating desc
+
+
+
+# 15th question of top 50
+# Write a MySQL query to find the product_id and the average price of all products in
+
+select P.product_id, 
+ifnull(round(sum(P.price*S.units) /sum(S.units),2),0) as  average_price
+from Prices P
+left join UnitsSold S 
+on  S.product_id=P. product_id and S.purchase_date between P.start_date and  P.end_date 
+
+group by product_id
