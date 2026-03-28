@@ -166,3 +166,16 @@ left join UnitsSold S
 on  S.product_id=P. product_id and S.purchase_date between P.start_date and  P.end_date 
 
 group by product_id
+
+
+
+
+# 16th question of top 50
+# Write a MySQL query to find the project_id and the average experience years of all employees
+
+select project_id ,
+round(avg(e.experience_years),2) as average_years 
+from Project p
+left join Employee e on
+p.employee_id=e. employee_id 
+group by p.project_id
