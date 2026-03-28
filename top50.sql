@@ -179,3 +179,15 @@ from Project p
 left join Employee e on
 p.employee_id=e. employee_id 
 group by p.project_id
+
+
+
+
+# 17th question of top 50
+# Write a MySQL query to find the contest_id and the percentage of users who registered for
+SELECT 
+    contest_id, 
+    ROUND(COUNT(user_id) * 100.0 / (SELECT COUNT(*) FROM Users), 2) AS percentage
+FROM Register
+GROUP BY contest_id
+ORDER BY percentage DESC, contest_id ASC;
