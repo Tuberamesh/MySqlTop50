@@ -208,3 +208,16 @@ round(ifnull(avg(c.action='confirmed'),0),2) as confirmation_rate
 from Signups s
 left join Confirmations c on s.user_id = c.user_id
 group by s.user_id;
+
+# 20th question of top 50
+# Write a MySQL query to find the month, country, number of transactions, number of
+
+SELECT 
+    DATE_FORMAT(trans_date, '%Y-%m') AS month,
+    country,
+    COUNT(id) AS trans_count,
+    SUM(state = 'approved') AS approved_count,
+    SUM(amount) AS trans_total_amount,
+    SUM(CASE WHEN state = 'approved' THEN amount ELSE 0 END) AS approved_total_amount
+FROM Transactions
+GROUP BY month, country;
