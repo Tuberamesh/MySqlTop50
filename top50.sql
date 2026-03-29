@@ -200,3 +200,11 @@ SELECT
     ROUND(SUM(CASE WHEN rating < 3 THEN 1 ELSE 0 END) * 100 / COUNT(*), 2) AS poor_query_percentage
 FROM Queries
 GROUP BY query_name;
+
+# 19th question of top 50
+# Write a MySQL query to find the user_id and the confirmation rate of all users in
+select s.user_id,
+round(ifnull(avg(c.action='confirmed'),0),2) as confirmation_rate 
+from Signups s
+left join Confirmations c on s.user_id = c.user_id
+group by s.user_id;
