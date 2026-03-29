@@ -221,3 +221,22 @@ SELECT
     SUM(CASE WHEN state = 'approved' THEN amount ELSE 0 END) AS approved_total_amount
 FROM Transactions
 GROUP BY month, country;
+
+
+
+
+# 21st question of top 50
+# Write a MySQL query to find the customer_id and the percentage of orders that were delivered
+
+SELECT 
+    ROUND(
+        SUM(CASE WHEN order_date = customer_pref_delivery_date THEN 1 ELSE 0 END) * 100.0 / 
+        COUNT(*), 
+    2) AS immediate_percentage
+FROM Delivery
+WHERE (customer_id, order_date) IN (
+
+    SELECT customer_id, MIN(order_date)
+    FROM Delivery
+    GROUP BY customer_id
+);
