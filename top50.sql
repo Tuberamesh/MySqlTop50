@@ -327,3 +327,13 @@ from(
     group by num
     having count(num)=1
 ) as unique_nums;
+
+
+# 29th question of top 50
+# Write a MySQL query to find the customer_id of all customers who have bought all products
+
+SELECT customer_id
+FROM Customer
+GROUP BY customer_id
+HAVING COUNT(DISTINCT product_key) = 
+(SELECT COUNT(*) FROM Product);
