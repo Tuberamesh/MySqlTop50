@@ -262,3 +262,16 @@ select teacher_id,
  count(DISTINCT subject_id) as cnt
 from Teacher
  group by teacher_id
+
+
+
+
+ # 24th question of top 50
+# Write a MySQL query to find the day and the count of active users for each day
+
+SELECT 
+    activity_date AS day, 
+    COUNT(DISTINCT user_id) AS active_users
+FROM Activity
+WHERE activity_date BETWEEN '2019-06-28' AND '2019-07-27'
+GROUP BY activity_date;
