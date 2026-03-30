@@ -253,3 +253,12 @@ WHERE (player_id, DATE_SUB(event_date, INTERVAL 1 DAY)) IN (
     FROM Activity
     GROUP BY player_id
 );
+
+
+# 23rd question of top 50
+# Write a MySQL query to find the teacher_id and the count of subjects taught by each
+
+select teacher_id,
+ count(DISTINCT subject_id) as cnt
+from Teacher
+ group by teacher_id
