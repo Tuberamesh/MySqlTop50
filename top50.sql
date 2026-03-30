@@ -313,3 +313,17 @@ count(follower_id) as followers_count
 from Followers
 group by user_id
 order by user_id asc
+
+
+
+
+# 28th question of top 50
+# Write a MySQL query to find the num of all unique numbers in MyNumbers
+
+select  max(num) as num 
+from(
+    select num 
+    from MyNumbers
+    group by num
+    having count(num)=1
+) as unique_nums;
