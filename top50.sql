@@ -302,3 +302,14 @@ select class
 from Courses 
 group by class
 HAVING COUNT(student) >= 5;
+
+
+# 27th question of top 50
+# Write a MySQL query to find the user_id and the count of followers for all users
+
+select  user_id, 
+count(follower_id) as followers_count
+
+from Followers
+group by user_id
+order by user_id asc
