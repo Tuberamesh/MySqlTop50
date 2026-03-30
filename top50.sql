@@ -290,3 +290,15 @@ year as first_year ,
    where ( product_id, year ) in (select product_id, min(year) 
    from Sales
    group by product_id);
+
+
+
+
+   # 26th question of top 50
+# Write a MySQL query to find the class of all courses that have at least 5
+
+select class
+
+from Courses 
+group by class
+HAVING COUNT(student) >= 5;
