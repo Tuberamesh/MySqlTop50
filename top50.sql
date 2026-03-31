@@ -352,3 +352,23 @@ select
   where reports_to <> 'null'
   group by reports_to
   order by employee_id asc ;
+
+
+
+  # 31st question of top 50
+# Write a MySQL query to find the employee_id and department_id of all employees who are
+
+SELECT 
+    employee_id, 
+    department_id
+FROM Employee
+WHERE primary_flag = 'Y'
+
+UNION
+
+SELECT 
+    employee_id, 
+    department_id
+FROM Employee
+GROUP BY employee_id
+HAVING COUNT(employee_id) = 1;
