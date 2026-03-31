@@ -337,3 +337,18 @@ FROM Customer
 GROUP BY customer_id
 HAVING COUNT(DISTINCT product_key) = 
 (SELECT COUNT(*) FROM Product);
+
+
+# 30th question of top 50
+# Write a MySQL query to find the employee_id, name, count of reports and average
+
+select 
+  distinct(reports_to) as employee_id,
+  (select name from Employees where employee_id=e.reports_to) as name ,
+  count(reports_to) as reports_count, 
+  Round(AVG(age)) as average_age
+
+  from Employees e
+  where reports_to <> 'null'
+  group by reports_to
+  order by employee_id asc ;
