@@ -372,3 +372,13 @@ SELECT
 FROM Employee
 GROUP BY employee_id
 HAVING COUNT(employee_id) = 1;
+
+
+
+# 32nd question of top 50
+# Write a MySQL query to find the x, y, z and whether they can form
+
+select x, y, z, 
+case when x+y>z and x+z>y and y+z>x then 'Yes' else 'No' end as triangle
+
+from Triangle
