@@ -413,3 +413,16 @@ SELECT DISTINCT product_id, 10 AS price
 FROM Products
 GROUP BY product_id
 HAVING MIN(change_date) > '2019-08-16';
+
+
+
+# 35th question of top 50
+# Write a MySQL query to find the person_name of the person who is at the front
+
+SELECT a.person_name
+FROM Queue a 
+JOIN Queue b ON a.turn >= b.turn
+GROUP BY a.turn
+HAVING SUM(b.weight) <= 1000
+ORDER BY a.turn DESC
+LIMIT 1;
