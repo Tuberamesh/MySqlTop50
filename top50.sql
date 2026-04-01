@@ -426,3 +426,25 @@ GROUP BY a.turn
 HAVING SUM(b.weight) <= 1000
 ORDER BY a.turn DESC
 LIMIT 1;
+
+
+# 36th question of top 50
+# Write a MySQL query to find the category of all accounts based on their income
+
+
+SELECT 'Low Salary' AS category, COUNT(*) AS accounts_count
+FROM Accounts
+WHERE income < 20000
+
+UNION
+
+
+SELECT 'Average Salary' AS category, COUNT(*) AS accounts_count
+FROM Accounts
+WHERE income >= 20000 AND income <= 50000
+
+UNION
+
+SELECT 'High Salary' AS category, COUNT(*) AS accounts_count
+FROM Accounts
+WHERE income > 50000;
