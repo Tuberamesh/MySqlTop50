@@ -492,3 +492,23 @@ UNION ALL
  GROUP BY movie_id
  ORDER BY AVG(rating) DESC, title ASC
  LIMIT 1);
+
+
+
+ # 40th question of top 50
+# Write a MySQL query to find the visited_on, amount and the average amount of all transactions in the last 7 days for each day
+SELECT 
+    visited_on,
+    amount,
+    ROUND(amount / 7, 2) AS average_amount
+FROM (
+    SELECT 
+        visited_on,
+       
+        SUM(SUM(amount)) OVER(ORDER BY visited_on ROWS BETWEEN 6 PRECEDING AND CURRENT ROW) AS amount,
+       
+        DENSE_RANK() OVER(ORDER BY visited_on) AS day_num
+    FROM Customer
+    GROUP BY visited_on
+) t
+WHERE day_num >= 7;
