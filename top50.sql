@@ -473,3 +473,22 @@ CASE
 END AS id, student
 from Seat
 order by id asc
+
+# 39th question of top 50
+# Write a MySQL query to find the name of the user who has rated the most movies
+(SELECT name AS results
+ FROM MovieRating 
+ JOIN Users USING(user_id)
+ GROUP BY user_id
+ ORDER BY COUNT(*) DESC, name ASC
+ LIMIT 1)
+
+UNION ALL
+
+(SELECT title AS results
+ FROM MovieRating 
+ JOIN Movies USING(movie_id)
+ WHERE created_at BETWEEN '2020-02-01' AND '2020-02-29'
+ GROUP BY movie_id
+ ORDER BY AVG(rating) DESC, title ASC
+ LIMIT 1);
