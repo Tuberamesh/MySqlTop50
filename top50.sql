@@ -448,3 +448,16 @@ UNION
 SELECT 'High Salary' AS category, COUNT(*) AS accounts_count
 FROM Accounts
 WHERE income > 50000;
+
+
+# 37th question of top 50
+# Write a MySQL query to find the employee_id of all employees who have a salary less
+
+SELECT employee_id
+FROM Employees
+WHERE salary < 30000 
+  AND manager_id NOT IN (
+    SELECT employee_id 
+    FROM Employees
+  )
+ORDER BY employee_id;
