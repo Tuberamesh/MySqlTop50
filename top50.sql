@@ -461,3 +461,15 @@ WHERE salary < 30000
     FROM Employees
   )
 ORDER BY employee_id;
+
+
+# 38th question of top 50
+# Write a MySQL query to find the id of all seats that are adjacent to an occupied
+select 
+CASE
+    WHEN id % 2 = 1 AND id != (SELECT MAX(id) FROM Seat) THEN id + 1
+    WHEN id % 2 = 0 THEN id - 1
+    ELSE id
+END AS id, student
+from Seat
+order by id asc
