@@ -512,3 +512,19 @@ FROM (
     GROUP BY visited_on
 ) t
 WHERE day_num >= 7;
+
+
+
+
+# 41st question of top 50
+#requester_id and accepter_id of all users who have accepted at least 3 friend requests
+
+SELECT id, COUNT(*) AS num
+FROM (
+    SELECT requester_id AS id FROM RequestAccepted
+    UNION ALL
+    SELECT accepter_id AS id FROM RequestAccepted
+) AS all_friends
+GROUP BY id
+ORDER BY num DESC
+LIMIT 1;
