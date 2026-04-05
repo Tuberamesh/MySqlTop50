@@ -599,3 +599,13 @@ SELECT
 FROM Patients
 WHERE conditions LIKE 'DIAB1%' 
    OR conditions LIKE '% DIAB1%';
+
+
+
+   # 46th question of top 50
+# Write a MySQL query to find the id of all employees who have the same salary as
+
+DELETE p2 
+FROM Person p1, Person p2
+WHERE p1.email = p2.email 
+  AND p2.id > p1.id;
