@@ -587,3 +587,15 @@ as name
 
 from Users
 order by user_id asc
+
+
+
+# 45th question of top 50
+# Write a MySQL query to find the patient_id, patient_name and conditions of all patients
+SELECT 
+    patient_id, 
+    patient_name, 
+    conditions
+FROM Patients
+WHERE conditions LIKE 'DIAB1%' 
+   OR conditions LIKE '% DIAB1%';
