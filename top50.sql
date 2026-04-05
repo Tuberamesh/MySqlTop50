@@ -570,3 +570,20 @@ FROM (
     JOIN Department d ON e.departmentId = d.id
 ) AS ranked_salaries
 WHERE rnk <= 3;
+
+
+
+
+
+# 44th question of top 50
+# Write a MySQL query to find the user_id and name of all users in the Users table, where the name is formatted such that the first letter is uppercase and the rest of the letters
+
+select user_id,
+concat(
+upper(left(name,1)),
+lower(substring(name,2))
+)
+as name
+
+from Users
+order by user_id asc
