@@ -648,3 +648,13 @@ JOIN Orders o ON p.product_id = o.product_id
 WHERE o.order_date BETWEEN '2020-02-01' AND '2020-02-29'
 GROUP BY p.product_id
 HAVING unit >= 100;
+
+
+
+# 50th question of top 50
+#regex problem with flag 'c' for case sensitive
+
+SELECT user_id, name, mail
+FROM Users
+
+WHERE REGEXP_LIKE(mail, '^[A-Za-z][A-Za-z0-9_.-]*@leetcode\\.com$', 'c');
