@@ -658,3 +658,36 @@ SELECT user_id, name, mail
 FROM Users
 
 WHERE REGEXP_LIKE(mail, '^[A-Za-z][A-Za-z0-9_.-]*@leetcode\\.com$', 'c');
+
+
+
+
+
+
+
+#extra practice question
+# Write a MySQL query to find the name of the user who has rated the most movies and the title of the movie with the highest average rating in February 2020.
+with retrive as
+(select mr.*, u.name,m.title
+from MovieRating mr
+left join Users u
+on mr.user_id=u.user_id
+left join Movies m
+on m.movie_id=mr.movie_id)
+
+
+(select name as results
+from retrive 
+group by name 
+order by count(*) desc,name
+limit 1
+)
+union all
+(
+select title
+from retrive
+where date_format(created_at,'%Y-%m')='2020-02'
+group by title
+order by avg(rating) desc,title
+limit 1
+)
