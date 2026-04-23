@@ -691,3 +691,24 @@ group by title
 order by avg(rating) desc,title
 limit 1
 )
+
+
+# Write a MySQL query to find the
+ visited_on, amount and the average amount of 
+ all transactions in the last 7 days for each day.
+
+with daysum as(
+
+select visited_on,
+sum(amount) as amount 
+from Customer 
+group by visited_on
+)
+
+select a.visited_on,
+sum(b.amount) as amount,
+round(avg(b.amount),2) as average_amount
+from daysum a, daysum b 
+where datediff(a.visited_on , b.visited_on) between 0 and 6
+group by a.visited_on
+having count(*)>6
