@@ -34,3 +34,10 @@ SELECT
 FROM Person p
 LEFT JOIN Address a
 ON p.personId = a.personId;
+
+
+# Find the rank of each score
+SELECT 
+    score,
+    DENSE_RANK() OVER (ORDER BY score DESC) AS `rank`
+FROM Scores;
