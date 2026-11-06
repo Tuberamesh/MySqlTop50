@@ -58,3 +58,9 @@ select email as Email
 from Person
 group by email
 having count(email)>1;
+
+# Find the customers who have not placed any orders
+
+select name Customers 
+from Customers 
+where id not in(select CustomerId from Orders);
