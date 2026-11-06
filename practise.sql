@@ -41,3 +41,13 @@ SELECT
     score,
     DENSE_RANK() OVER (ORDER BY score DESC) AS `rank`
 FROM Scores;
+
+
+
+# Find the employees whose salary is greater than their manager's salary
+select e.name as Employee
+from Employee e
+join Employee m
+on m.id=e.managerId
+
+where e.salary>m.salary
