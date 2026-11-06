@@ -51,3 +51,10 @@ join Employee m
 on m.id=e.managerId
 
 where e.salary>m.salary
+
+
+# Find the duplicate emails in the Person table
+select email as Email
+from Person
+group by email
+having count(email)>1;
