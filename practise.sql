@@ -64,3 +64,19 @@ having count(email)>1;
 select name Customers 
 from Customers 
 where id not in(select CustomerId from Orders);
+
+
+# Find the employees with the highest salary in each department
+select d.name as Department,
+e.name as Employee ,
+e.salary as Salary
+
+from Employee e
+join  Department d
+on e.departmentId =d.id
+
+WHERE (e.departmentId, e.salary) IN (
+    SELECT departmentId, MAX(salary)
+    FROM Employee
+    GROUP BY departmentId
+);
