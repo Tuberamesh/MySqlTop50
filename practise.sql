@@ -80,3 +80,34 @@ WHERE (e.departmentId, e.salary) IN (
     FROM Employee
     GROUP BY departmentId
 );
+
+
+
+# Find the cancellation rate for each day between October 1, 2013, and October 3, 2013, for trips where both the client and driver are not banned. The cancellation rate is defined as the number of trips that were not completed divided by the total number of trips for that day.
+SELECT
+    Request_at AS Day,
+    ROUND(
+        SUM(CASE
+            WHEN Status != 'completed' THEN 1
+            ELSE 0
+        END) * 1.0 / COUNT(*),
+        2
+    ) AS `Cancellation Rate`
+
+FROM Trips
+
+WHERE Request_at BETWEEN '2013-10-01' AND '2013-10-03'
+
+AND Client_Id IN (
+    SELECT Users_Id
+    FROM Users
+    WHERE Banned = 'No'
+)
+
+AND Driver_Id IN (
+    SELECT Users_Id
+    FROM Users
+    WHERE Banned = 'No'
+)
+
+GROUP BY Request_at;
