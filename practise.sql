@@ -111,3 +111,12 @@ AND Driver_Id IN (
 )
 
 GROUP BY Request_at;
+
+
+
+# Find the first login date for each player in the Activity table
+select 
+player_id,
+min(event_date) as first_login
+from Activity
+group by player_id
