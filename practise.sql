@@ -120,3 +120,15 @@ player_id,
 min(event_date) as first_login
 from Activity
 group by player_id
+
+
+# Find the names of all salespeople who have not made any sales to the company named 'RED'.
+SELECT name
+FROM SalesPerson
+WHERE sales_id NOT IN (
+    SELECT o.sales_id
+    FROM Orders o
+    JOIN Company c
+        ON o.com_id = c.com_id
+    WHERE c.name = 'RED'
+);
