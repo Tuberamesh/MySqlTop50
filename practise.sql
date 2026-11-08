@@ -134,7 +134,7 @@ WHERE sales_id NOT IN (
 );
 
 
-
+# Find the type of each node in the Tree table. A node is considered a 'Root' if it has no parent, an 'Inner' node if it has at least one child, and a 'Leaf' node if it has no children.
 SELECT
     id,
     CASE
