@@ -132,3 +132,17 @@ WHERE sales_id NOT IN (
         ON o.com_id = c.com_id
     WHERE c.name = 'RED'
 );
+
+
+
+SELECT
+    id,
+    CASE
+        WHEN p_id IS NULL THEN 'Root'
+        WHEN id IN (
+            SELECT p_id
+            FROM Tree
+        ) THEN 'Inner'
+        ELSE 'Leaf'
+    END AS type
+FROM Tree;
